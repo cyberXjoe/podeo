@@ -17,4 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users','UserController@index');
+Route::get('/remote-users','UserController@index');
+
+Route::get('/callAnalytics/{id}','AnalyticsController@callAnalytics');

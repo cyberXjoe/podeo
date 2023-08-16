@@ -3,21 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use App\Analytics;
 
 class UserController extends Controller
 {
     public function index() {
-
-    	$users = [
-    		[
-    			"id" => 1,
-    			"name" => "Edo"
-    		],
-    		[
-    			"id" => 2,
-    			"name" => "Dedo"
-    		],
-    	];
-    	return \Response::json($users,200);
+      $x = Analytics::get();
+      dd($x);
+		$response = Http::get("http://nginx_one/users");
+     
+    	return $response->json();
     }
 }

@@ -9,8 +9,16 @@ class UserController extends Controller
 {
     public function index() {
     	
-    	$response = Http::get("http://nginx_two/users");
-
-    	return $response->json();
+        $users = [
+    		[
+    			"id" => 1,
+    			"name" => "Edo"
+    		],
+    		[
+    			"id" => 2,
+    			"name" => "Dedo"
+    		],
+    	];
+    	return \Response::json($users,200);
     }
 }

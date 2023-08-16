@@ -17,4 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/remote-users','UserController@index');
+Route::get('/users','UserController@index');
+
+Route::get('episode/{id}', 'EpisodeController@getEpisode')->name('getEpisode');
