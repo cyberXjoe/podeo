@@ -11,3 +11,5 @@ Using Laravel + Docker
 * docker-compose up
 * open postman
 * first login to be authorized for using the rest APIs
+* project1 will be running on port: 8081
+* project2 will be running on port: 8082
