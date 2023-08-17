@@ -27,10 +27,7 @@ Route::post('login', 'AuthController@login');
 Route::middleware('jwt.auth')->group(function () {
     // Add episode
     Route::post('episodes', 'EpisodeController@addEpisode');
-    
-    // Flag episode as private (Admin only)
-    // Route::middleware(['admin','signed'])->put('episodes/{id}/flag-private', 'EpisodeController@flagAsPrivate');
-    
+
     // Get signed URL for private episode
     Route::get('episodes/{id}/signed-url', 'EpisodeController@getSignedUrl');
 

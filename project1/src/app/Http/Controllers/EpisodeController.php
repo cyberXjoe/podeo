@@ -20,12 +20,6 @@ class EpisodeController extends Controller
 {
     public function addEpisode(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'mp3_url' => 'required|url',
-        //     'name' => 'required|string',
-        //     'author' => 'required|string',
-        // ]);
-
         $validator = Validator::make($request->all(), [
             'mp3_file' => 'required|file|mimes:mp3',
             'name' => 'required|string',
@@ -41,9 +35,8 @@ class EpisodeController extends Controller
             ], 422);
         }
 
-
         $episode = new Episode();
-        // $episode->mp3_url = $request->mp3_url;
+
         if ($request->hasFile('mp3_file')) {
             $mp3File = $request->file('mp3_file');
             $fileName = time() . '_' . $mp3File->getClientOriginalName();
@@ -75,13 +68,8 @@ class EpisodeController extends Controller
             return response()->json(['error' => 'Episode is not private']);
         }
 
-        // $url = $this->generateSignedUrl($episode->mp3_url);
-
-        // return response()->json(['signed_url' => $url]);
-
         $signedUrl = $this->generateSignedUrl($id);
   
-        
         return $signedUrl;
     }
 
@@ -151,26 +139,8 @@ class EpisodeController extends Controller
 
     private function callAnalyticsService($episodeId)
     {
-        $url = "http://nginx_two/api/callAnalytics"; // Replace with actual URL
+        $url = "http://nginx_two/api/callAnalytics";
         $response = Http::post($url, ['episode_id' => $episodeId]);
-        // $response = Http::get("http://nginx_one/users");
     	return $response->json();
     }
-
-    // private function callAnalyticsService($episodeId)
-    // {
-    //     // Implement the logic to call the analytics service API endpoint
-    //     // You can use Laravel's HTTP client or any other method you prefer
-    //     // Example using Laravel's HTTP client:
-    //     $analyticsUrl = 'https://analytics-service-api.com/add-entry';
-    //     Http::withHeaders([
-    //         'Authorization' => 'Bearer YOUR_AUTH_TOKEN', // Replace with the appropriate token
-    //     ])->post($analyticsUrl, [
-    //         'episode_id' => $episodeId,
-    //         'user_id' => auth()->id(), // Assuming you have authentication set up
-    //     ]);
-
-    //     // Implement fire-and-forget mechanism if needed
-    // }
-
 }

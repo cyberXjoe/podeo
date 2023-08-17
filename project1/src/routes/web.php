@@ -17,6 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users','UserController@index');
 
 Route::get('episode/{id}', 'EpisodeController@getEpisode')->name('getEpisode');
