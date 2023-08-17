@@ -4,7 +4,7 @@ Using Laravel + Docker
 
 ## Installation
 
-* make sure you install docker
+* make sure you install docker (https://docs.docker.com/engine/install/)
 * cd project1/
 * docker-compose up
 * cd project2/
