@@ -1,11 +1,13 @@
-# Multiple Laravel apps with docker
+# Podeo - Media Streaming and Analytics Microservice Architecture 
 
-Example of two laravel apps running with docker . These apps communicate over docker networks.
+Using Laravel + Docker
 
 ## Installation
 
+* make sure you install docker
 * cd project1/
 * docker-compose up
 * cd project2/
 * docker-compose up
-* open rest-api -> http://localhost:8082/remote-users/
+* open postman
+* first login to be authorized for using the rest APIs
